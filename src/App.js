@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Candidates from './components/candidates/Candidates';
+import Header from './components/header/Header';
+import SideBar from './components/sideBar/SideBar';
+import Vacancies from './components/vacancies/Vacancies';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Vacancy from './components/vacancies/vacancy/Vacancy';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="app">
+      <header className='header'><Header/></header>
+      <aside  className='sideBar'><SideBar/></aside>
+      <main className='main'>
+          <Routes>
+            <Route path="/" element={<Vacancies/>} />
+            <Route path="/candidates" element={<Candidates/>} />
+            <Route path="/vacancies/:id" element={<Vacancy/>} />
+          </Routes>
+      </main>
+      <footer className='footer'>dfsf</footer>
     </div>
+    </Router>
   );
 }
 
